@@ -3,12 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [response, setResponse] = useState('No response yet.');
+  const [response, setResponse] = useState('No response yet.')
+  const [dbConnection, setDbConnection] = useState('')
 
-  useEffect(()=> {
+  useEffect(() => {
     fetch("http://localhost:9000/demoAPI")
       .then(res => res.text())
       .then(res => setResponse(res))
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:9000/testDB")
+      .then(res => res.text())
+      .then(res => setDbConnection(res))
   }, [])
 
   return (
@@ -17,6 +24,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           {response}
+        </p>
+        <p>
+          {dbConnection}
         </p>
         <a
           className="App-link"

@@ -3,7 +3,6 @@ services:
     client:
         image: udemy-client
         build: ./client
-        restart: always
         ports:
             - "3000:3000"
         volumes:
@@ -15,7 +14,6 @@ services:
     server:
         image: udemy-server
         build: ./server
-        restart: always
         ports:
             - "9000:9000"
         volumes:
