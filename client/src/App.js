@@ -1,13 +1,22 @@
+import { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [response, setResponse] = useState('No response yet.');
+
+  useEffect(()=> {
+    fetch("http://localhost:9000/demoAPI")
+      .then(res => res.text())
+      .then(res => setResponse(res))
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {response}
         </p>
         <a
           className="App-link"
